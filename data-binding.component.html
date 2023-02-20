@@ -1,0 +1,32 @@
+<!-- String Interpolation -->
+<p><strong> String Interpolation :-</strong>{{msg}} </p>
+
+<!-- Property-binding -->
+<!-- <img src="{{imgUrl}}" alt="nature photo"> -->
+<img [src]="imgUrl" alt="nature photo">
+
+<!-- class-binding -->
+<p [class.text-color]="bool">Class-binding</p>
+
+<!-- style-binding -->
+<p [style.backgroundColor]="bool?'yellow':''">Style - binding</p>
+
+<!-- event-binding -->
+<button (click)="buttonClick($event)">Click Here</button>
+
+<!-- event-filtering -->
+<!-- <input type="text" (keyup)="onKeyUp($event)"> -->
+<input type="text" (keyup.enter)="onKeyUp($event)">
+
+<!-- templete-variable  -->
+<input type="text" (keyup.enter)="onKeyUp(username.value)" #username><br>
+
+<!-- two way data binding -->
+<span>programming Language : </span>
+<input type="text" [(ngModel)]="programmingLanguage" (keyup.enter)="onKeyEnter()">
+<p>{{programmingLanguage}} </p>
+<!-- one way data binding and two way data binding -->
+<h2>one way data binding </h2>
+<input type="text" [value]="textValue" (keyup.enter)="onKeyOneWay()">
+<input type="text" [(ngModel)]="textValue" (keyup.enter)="onKeyOneWay()">
+

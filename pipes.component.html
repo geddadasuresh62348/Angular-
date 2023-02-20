@@ -1,0 +1,32 @@
+<!--1.uppercase pipe  -->
+<h3>{{title|uppercase}} </h3>
+
+<!--2.lowercase pipe  -->
+<H2>{{title|lowercase}} </H2>
+
+<!-- 3.number pipe-->
+<h4>{{totalAmount|number}} </h4>
+
+<!-- 4.decimal pipe -->
+<h4>{{decValue|number:'2.2-3'}} </h4>
+
+<!-- 5.Currency pipe -->
+<h5>{{totalAmount|currency:"INR":false:'3.0-0' }} </h5>
+
+<!-- 6.date pipe -->
+<h5>{{today|date:'short'}} </h5>
+
+<!-- 7.JSON pipe -->
+<h4>{{obj|json}} </h4>
+
+<!-- 8.percent pipe -->
+<h4>{{marksPercent|percent}} </h4>
+
+<!-- 9.slice pipe -->
+<h4>{{yearArr|slice:0:2}} </h4>
+
+<!-- 10.custom pipe -->
+<h4>{{state | append}} </h4>
+
+<!-- cutome pipes with arguemnts -->
+<p>{{dummyText |summary:20}} </p>

@@ -1,0 +1,76 @@
+<!-------------------1.NgFor Directive ------------------------->
+<p>{{ postArray }}</p>
+<ul>
+  <li *ngFor="let post of postArray">{{ post }}</li>
+</ul>
+
+<!-- Fetching object array using *ngFor directive -->
+<button (click)="addNewData()">Add new data</button>
+
+<ul>
+  <li *ngFor="let obj of objArray; let i = index">
+    {{ i + 1 }} {{ obj.name }} --> {{ obj.village }}
+    <button (click)="deleteData(i)">Delete</button>
+  </li>
+</ul>
+
+<!-----------------2.ngIf Directive ------------------>
+
+<!-- <h1>--------ngIf----------</h1>
+<div *ngIf='objArray.length>0;then custNames else noData'>
+    <ng-template #custNames>
+        <ul>
+            <li *ngFor="let obj of objArray;let i = index">{{i+1}} {{obj.name}}  -> {{obj.village}} 
+                <button (click)="deleteData(i)">Delete</button>
+            </li>
+        </ul>
+    </ng-template>
+</div>
+<ng-template #noData>
+    <p>There is no data to fetch</p>
+</ng-template> -->
+
+<!----------------------3.ngSwitch --------------->
+<div>
+  <button (click)="onClick('step 1')">Step 1</button>
+  <button (click)="onClick('step 2')">Step 2</button>
+  <button (click)="onClick('step 3')">Step 3</button>
+</div>
+<div [ngSwitch]="stepForm">
+  <div *ngSwitchCase="'step 1'">Step 1 form</div>
+  <div *ngSwitchCase="'step 2'">Step 2 form</div>
+  <div *ngSwitchCase="'step 3'">Step 3 form</div>
+  <div *ngSwitchDefault>Out of forms</div>
+</div>
+
+<!--------------4.ngStyle -------------------->
+<h3
+  [style.color]="isActive ? 'red' : 'black'"
+  [style.textTransform]="isActive ? 'uppercase' : ''"
+>
+  Normal Approach
+</h3>
+<h3
+  [ngStyle]="{
+    color: isActive ? 'red' : 'black',
+    textTransform: isActive ? 'uppercase' : 'lowercase'
+  }"
+>
+  Ng Style Directive
+</h3>
+
+<!-- 5.ngClass -->
+<h1>-----------ngClass-----------</h1>
+<p [class.add-color]="isActive" [class.add-fontSize]="isActive">
+  Normal Approach
+</p>
+
+<p
+  [ngClass]="{
+    'add-color': isActive,
+    'add-fontSize': isActive,
+    'add-fontWeight': isActive
+  }"
+>
+  Ng Class Approach
+</p>

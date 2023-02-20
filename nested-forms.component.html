@@ -1,0 +1,112 @@
+<p>reactive-forms works!</p>
+<div class="container mt-5">
+    <div class="form-area">
+      <form [formGroup]='form' (ngSubmit)="onSubmit()">
+        
+          <!-- full name input -->
+          <label>First Name :  </label><br>
+          <input
+            type="text"
+            placeholder="Full name"
+            class="form-control"
+            formControlName="fullname"
+
+          /><br /><br />
+          <!-- validation -->
+          <div class="alert alert-danger" *ngIf="form.get('fullname').touched && form.get('fullname').invalid">
+            <div *ngIf="form.get('fullname').hasError('required')">Full name is required</div>
+            <div *ngIf="form.get('fullname').hasError('minlength')">Full name must be atleast 5 letters</div>
+          </div>
+          
+          <!-- email input  -->
+          <label>Email : </label>
+          <input
+          type="text"
+          placeholder="email"
+          class="form-control"
+          name="email"
+          formControlName="email"
+          /><br /><br />
+          <!-- validation -->
+          <div class="alert alert-danger" *ngIf="form.get('email').touched && form.get('fullname').invalid">
+            <div *ngIf="form.get('email').hasError('required')">email is required</div>
+            <div *ngIf="form.get('email').hasError('email')">enter valid email</div>
+          </div>
+          
+          <!-- address input -->
+          <!-- contact Details Nested form group -->
+          <div formGroupName="contactDetails">
+              <div class="form-group">
+                  
+              <label>Address : </label>
+              <textarea
+              cols="30"
+              rows="3"
+              placeholder="Enter your address"
+              class="form-control"
+              name="address"
+              formControlName="address"
+              ></textarea
+              ><br /><br />
+              
+              <!-- validation -->
+              <div class="alert alert-danger" *ngIf="form.get('contactDetails.address').touched && form.get('contactDetails.address').invalid">
+                  <div *ngIf="form.get('contactDetails.address').hasError('required')">Address field is required...</div>
+                </div>
+            </div>
+          <div class="form-group">
+
+              <label>Shipping Address : </label>
+              <textarea
+              cols="30"
+              rows="3"
+              placeholder="Enter your address"
+              class="form-control"
+              name="address"
+              formControlName="shippingAddress"
+              ></textarea
+              ><br /><br />
+              
+              <!-- validation -->
+              <div class="alert alert-danger" *ngIf="form.get('contactDetails.shippingAddress').touched && form.get('contactDetails.shippingAddress').invalid">
+                  <div *ngIf="form.get('contactDetails.shippingAddress').hasError('required')">Shipping Address field is required...</div>
+                </div>
+            </div>
+          <div class="form-group">
+
+              <label>Contact Number : </label>
+              <textarea
+              cols="30"
+              rows="3"
+              placeholder="Enter your address"
+              class="form-control"
+              name="address"
+              formControlName="contactInfo"
+              ></textarea
+              ><br /><br />
+              
+              <!-- validation -->
+              <div class="alert alert-danger" *ngIf="form.get('contactDetails.contactInfo').touched && form.get('contactDetails.contactInfo').invalid">
+                  <div *ngIf="form.get('contactDetails.contactInfo').hasError('required')">contact number is valid </div>
+                  <div *ngIf="form.get('contactDetails.contactInfo').hasError('pattern')">Enter valid contact number</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-Group">
+            <label for="">Skills : </label>
+            <input type="text" class="form-control" (keyup.enter)="addSkills(skill)" #skill>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let skill of skills.controls;let i=index">
+                    {{skill.value}}
+                    <a href="" class="btn btn-sm btn-danger" (click)="removeSkills(i)">X</a>
+                </li>
+            </ul>
+        </div>
+        
+            <!-- submit button -->
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+        
+      </form>
+    </div>
+  </div>
+  

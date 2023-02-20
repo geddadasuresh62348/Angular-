@@ -1,0 +1,23 @@
+<div class="container">
+    <form  [formGroup]="form" (ngSubmit)="samp(form)">
+        <div class="form-group">
+            <label>Username : </label>
+            <input type="text" class="form-control" formControlName="username">
+        </div>
+        <!-- validations -->
+        <div class="alert alert-danger" *ngIf="form.get('username').touched && form.get('username').invalid">
+            <div *ngIf="form.get('username').hasError('required')">username is required...</div>
+            <div *ngIf="form.get('username').hasError('minlength')">username must be atleast 8 letters</div>
+            <div *ngIf="form.get('username').hasError('noSpaceValidations')">username must be atleast 8 letters</div>
+        </div>
+        <div class="form-group">
+            <label for="">Password : </label>
+            <input type="password" class="form-control" formControlName="password">
+            <!-- validations -->
+            <div class="alert alert-danger" *ngIf="form.get('password').touched && form.get('password').invalid">
+                <div *ngIf="form.get('password').hasError('required')">password is required...</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

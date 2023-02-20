@@ -1,0 +1,29 @@
+<div [ngClass]="{'centre':bool}">
+    <h1>User Details</h1>
+    <input type="text" placeholder="Enter your name" [(ngModel)]="custName"><br><br>
+    <input type="text" placeholder="Enter your Email" [(ngModel)]="custEmail"><br><br>
+    <textarea  cols="30" rows="10" placeholder="type address" [(ngModel)]="custAddress"></textarea><br><br>
+    <button (click)="saveData()">Save Data</button>
+</div>
+
+<div *ngIf="custDetails.length!==0;else noData">
+    <table [ngClass]="{'tableStyle':bool,'centre':bool}" border="1">
+        <tr >
+            <th> # </th>
+            <th> Name </th>
+            <th> Email </th>
+            <th> Address </th>
+            <th> Action </th>
+        </tr>
+        <tr *ngFor="let item of custDetails;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.address}}</td>
+            <td><button (click)="onDelete(i)">Delete</button></td>
+        </tr>
+    </table>
+</div>
+<ng-template #noData >
+    <p [ngClass]="{'centre':bool}">No data to show </p>
+</ng-template>

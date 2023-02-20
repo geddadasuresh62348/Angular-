@@ -1,0 +1,11 @@
+.centre{
+    text-align: center;
+}
+.tableStyle{
+    border: 1px solid black;
+    width: 500px;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}

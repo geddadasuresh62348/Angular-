@@ -1,0 +1,58 @@
+<p>reactive-forms works!</p>
+<div class="container mt-5">
+    <div class="form-area">
+      <form [formGroup]='form' (ngSubmit)="onSubmit()">
+        
+          <!-- full name input -->
+          <label>First Name :  </label><br>
+          <input
+            type="text"
+            placeholder="Full name"
+            class="form-control"
+            formControlName="fullname"
+
+          /><br /><br />
+          <!-- validation -->
+          <div class="alert alert-danger" *ngIf="form.get('fullname').touched && form.get('fullname').invalid">
+            <div *ngIf="form.get('fullname').hasError('required')">Full name is required</div>
+            <div *ngIf="form.get('fullname').hasError('minlength')">Full name must be atleast 5 letters</div>
+          </div>
+          
+          <!-- email input  -->
+          <label>Email : </label>
+          <input
+          type="text"
+          placeholder="email"
+          class="form-control"
+          name="email"
+          formControlName="email"
+          /><br /><br />
+          <!-- validation -->
+          <div class="alert alert-danger" *ngIf="form.get('email').touched && form.get('fullname').invalid">
+            <div *ngIf="form.get('email').hasError('required')">email is required</div>
+            <div *ngIf="form.get('email').hasError('email')">enter valid email</div>
+          </div>
+          
+          <!-- address input -->
+          <label>Address : </label>
+          <textarea
+            cols="30"
+            rows="10"
+            placeholder="Enter your address"
+            class="form-control"
+            name="address"
+           formControlName="address"
+          ></textarea
+          ><br /><br />
+  
+          <!-- validation -->
+          <div class="alert alert-danger" *ngIf="form.get('address').touched && form.get('address').invalid">
+            <div *ngIf="form.get('address').hasError('required')">Address field is required...</div>
+          </div>
+          <!-- submit button -->
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+        
+      </form>
+    </div>
+  </div>
+  

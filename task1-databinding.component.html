@@ -1,0 +1,14 @@
+<div class="centre">
+  <h3>Post Form</h3>
+  <input type="text" placeholder="post Title" [(ngModel)]="postTitle"(keyup.enter)="postTitleFunc()"/> <br />
+  <textarea cols="30" rows="10" placeholder="Post Details" [(ngModel)]="postDetails"></textarea><br>
+  <input type="text" placeholder="image url" [(ngModel)]="imgUrl" /><br />
+  <input type="text" placeholder="site address" [(ngModel)]="siteAddress" /><br />
+  <input type="checkbox" [(ngModel)]="addBackground"> Add Background
+</div>
+<div class="preview-area centre">
+    <h1 [class.add-background]="addBackground">{{postTitle}} </h1>
+    <p>{{postDetails}} </p>
+    <img [src]="imgUrl"><br>
+    <a [href]="siteAddress" target="_blank" [style.display]="siteAddress?'block':'none'">More Details</a>
+</div>
